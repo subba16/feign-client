@@ -2,6 +2,7 @@ package com.subba.feign.dto.client;
 
 import com.subba.feign.dto.Post;
 import com.subba.feign.dto.User;
+import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(url="https://jsonplaceholder.typicode.com",name="feign-client")
+@FeignClient(url="${api.url}",name="feign-client")
+@Headers({"Content-type", "application/json"})
 public interface FeignRestClient {
 
     @GetMapping("/users")
